@@ -37,7 +37,7 @@ const ts = [
 ].join("\n")
 writeFileSync(join(root, "src", "generated.ts"), ts)
 
-// --- zsh: glyphs.zsh ---
+// --- zsh: glyphs.plugin.zsh (auto-loaded by antidote/zinit/oh-my-zsh) ---
 const zshVar = (prefix, n) =>
   `${prefix}_${upper(n)}=$'\\U${glyphs[n].padStart(8, "0")}'`
 const zsh = [
@@ -50,8 +50,8 @@ const zsh = [
   ...names.map((n) => zshVar("SHUI_ICON", n)),
   "",
 ].join("\n")
-writeFileSync(join(root, "glyphs.zsh"), zsh)
+writeFileSync(join(root, "glyphs.plugin.zsh"), zsh)
 
 console.log(
-  `Generated src/generated.ts and glyphs.zsh (${names.length} glyphs)`,
+  `Generated src/generated.ts and glyphs.plugin.zsh (${names.length} glyphs)`,
 )

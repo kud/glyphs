@@ -18,7 +18,6 @@
   "files": [
     "dist",
     "glyphs.json",
-    "glyphs.zsh",
     "README.md",
     "LICENSE"
   ],

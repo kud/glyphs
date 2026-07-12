@@ -11,33 +11,64 @@
 
 ## Features
 
-- **One source, many outputs** — a single `glyphs.json` (`name → { nerd, unicode?, category }`) generates every language binding, so no project hand-maps codepoints again
-- **Escapes by construction** — codepoints are always emitted as normalised escapes (`\u{XXXX}` in TypeScript, `$'\U0000XXXX'` in zsh), never as raw Private-Use-Area bytes that mangle in editors and diffs
-- **Typed TypeScript output** — named consts plus a `glyph(name)` lookup, compiled with full `.d.ts` declarations
-- **zsh output** — `GLYPH_*` variables for shell tooling, generated from the same table
-- **Unicode fallback per glyph** — consumers can offer a non-Nerd mode without a tofu box on terminals that lack the font
+- **One source, many outputs** — a single `glyphs.json` (`name → codepoint`) generates every language binding, so no project hand-maps codepoints again.
+- **Escapes by construction** — codepoints are always emitted as normalised escapes (`\u{XXXX}` in TypeScript, `$'\U0000XXXX'` in zsh), never as raw Private-Use-Area bytes that are invisible in editors and mangle in diffs.
+- **Typed TypeScript** — named consts, a `glyph(name)` lookup, and a `GlyphName` union that rejects typos at compile time.
+- **zsh plugin** — `GLYPH_*` variables (plus `SHUI_ICON_*` aliases), loadable by any plugin manager.
 
-## Install
+## Usage
+
+### TypeScript
 
 ```sh
 npm install @kud/glyphs
 ```
 
-## Usage
-
 ```ts
-import { VERSION } from "@kud/glyphs"
+import { glyphs, glyph } from "@kud/glyphs"
+
+glyphs.check // "" — named const, autocompletes
+glyphs.arrowRight // ""
+glyph("cross") // "" — typed lookup; unknown names are a compile error
 ```
 
-The typed glyph exports are generated from `glyphs.json` via the codegen
-script below — run it after editing the source data, then import the named
-constants or the `glyph(name)` lookup it produces.
+### zsh
+
+Load the repo as a plugin — no npm involved. It auto-loads via `glyphs.plugin.zsh`:
+
+```zsh
+# antidote — add to ~/.zsh_plugins.txt
+kud/glyphs
+
+# zinit
+zinit light kud/glyphs
+
+# oh-my-zsh — clone into $ZSH_CUSTOM/plugins/glyphs, then add `glyphs` to plugins=()
+```
+
+```zsh
+print -P "$GLYPH_CHECK done"      #
+echo "$GLYPH_ARROW_RIGHT next"    #
+```
+
+Every glyph is also exposed as `$SHUI_ICON_*` for drop-in shui compatibility.
+
+> Nerd Font glyphs need a [Nerd Font](https://www.nerdfonts.com/) installed in
+> your terminal; without one they render as a `□` box.
+
+## Adding a glyph
+
+Edit `glyphs.json`, then regenerate:
+
+```sh
+npm run generate   # glyphs.json -> src/generated.ts + glyphs.plugin.zsh
+```
 
 ## Development
 
 ```sh
 npm install
-npm run generate   # glyphs.json -> src/generated.ts + dist/glyphs.zsh
+npm run generate
 npm run build      # tsup -> dist
 npm run typecheck
 npm test
