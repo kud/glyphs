@@ -1,1 +1,2 @@
-export const VERSION = "0.1.0"
+export { glyphs, glyph } from "./generated.js"
+export type { GlyphName } from "./generated.js"
