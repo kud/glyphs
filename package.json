@@ -1,6 +1,6 @@
 {
   "name": "@kud/glyphs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Multi-language source of truth for terminal glyphs — Nerd Font codepoints and unicode fallbacks, typed and escape-safe",
   "license": "MIT",
