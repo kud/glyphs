@@ -1,93 +1,378 @@
 {
-  "apple": "F179",
-  "arrow": "F178",
-  "arrow-down": "F063",
-  "arrow-left": "F060",
-  "arrow-right": "F061",
-  "arrow-up": "F062",
-  "aws": "E33D",
-  "bolt": "F0E7",
-  "brew": "F0FC",
-  "bug": "F188",
-  "bullet": "2022",
-  "bun": "E76F",
-  "c": "E61E",
-  "chart": "F080",
-  "check": "F00C",
-  "check-alt": "F046",
-  "checkmark": "F058",
-  "circle": "25CF",
-  "circle-empty": "25CB",
-  "clock": "F017",
-  "cloud": "F0C2",
-  "computer": "F108",
-  "cpp": "E61D",
-  "cross": "F00D",
-  "cross-alt": "F05C",
-  "dart": "E798",
-  "delete": "F1F8",
-  "diamond": "25C6",
-  "docker": "F308",
-  "download": "F019",
-  "edit": "F040",
-  "elixir": "E62D",
-  "elm": "E62C",
-  "error": "F00D",
-  "fire": "F06D",
-  "folder": "F07B",
-  "forward": "F04E",
-  "gem": "F219",
-  "git": "F1D3",
-  "globe": "F0AC",
-  "go": "E627",
-  "haskell": "E777",
-  "heart": "F004",
-  "info": "F05A",
-  "info-bracket": "F129",
-  "input-bracket": "F11C",
-  "install": "F487",
-  "java": "E256",
-  "julia": "E624",
-  "kotlin": "E634",
-  "link": "F0C1",
-  "loading": "F110",
-  "lock": "F023",
-  "lua": "E620",
-  "node": "E718",
-  "npm": "E71E",
-  "palette": "F1FC",
-  "php": "E608",
-  "pl-arrow-left": "E0B2",
-  "pl-arrow-right": "E0B0",
-  "pl-cap-left": "E0B6",
-  "pl-cap-right": "E0B4",
-  "plug": "F1E6",
-  "pointer": "276F",
-  "prompt": "F120",
-  "python": "E235",
-  "question": "F059",
-  "refresh": "F021",
-  "robot": "E28C",
-  "rocket": "F135",
-  "ruby": "E791",
-  "rust": "F1617",
-  "scala": "E737",
-  "search": "F002",
-  "settings": "F013",
-  "square": "25A0",
-  "square-empty": "25A1",
-  "star": "F005",
-  "starter": "F04B",
-  "success": "F00C",
-  "swift": "E755",
-  "table": "F0CE",
-  "thumbs-up": "F164",
-  "tools": "F0AD",
-  "triangle": "25B2",
-  "unlock": "F09C",
-  "upload": "F093",
-  "user-bracket": "F007",
-  "warn-bracket": "F12A",
-  "warning": "F071",
-  "zig": "E6A9"
+  "apple": {
+    "nerd": "F179",
+    "emoji": "🍎"
+  },
+  "arrow": {
+    "nerd": "F178",
+    "emoji": "→"
+  },
+  "arrow-down": {
+    "nerd": "F063",
+    "emoji": "↓"
+  },
+  "arrow-left": {
+    "nerd": "F060",
+    "emoji": "←"
+  },
+  "arrow-right": {
+    "nerd": "F061",
+    "emoji": "→"
+  },
+  "arrow-up": {
+    "nerd": "F062",
+    "emoji": "↑"
+  },
+  "aws": {
+    "nerd": "E33D",
+    "emoji": "☁️"
+  },
+  "bolt": {
+    "nerd": "F0E7",
+    "emoji": "⚡"
+  },
+  "brew": {
+    "nerd": "F0FC",
+    "emoji": "🍺"
+  },
+  "bug": {
+    "nerd": "F188",
+    "emoji": "🐛"
+  },
+  "bullet": {
+    "nerd": "2022",
+    "unicode": "203A",
+    "emoji": "•"
+  },
+  "bun": {
+    "nerd": "E76F",
+    "emoji": "🥟"
+  },
+  "c": {
+    "nerd": "E61E",
+    "emoji": "©"
+  },
+  "chart": {
+    "nerd": "F080",
+    "emoji": "📊"
+  },
+  "check": {
+    "nerd": "F00C",
+    "emoji": "✓"
+  },
+  "check-alt": {
+    "nerd": "F046",
+    "emoji": "✅"
+  },
+  "checkmark": {
+    "nerd": "F058",
+    "emoji": "✔️"
+  },
+  "circle": {
+    "nerd": "25CF",
+    "unicode": "25CF",
+    "emoji": "🔵"
+  },
+  "circle-empty": {
+    "nerd": "25CB",
+    "unicode": "25CB",
+    "emoji": "⚪"
+  },
+  "clock": {
+    "nerd": "F017",
+    "emoji": "🕐"
+  },
+  "cloud": {
+    "nerd": "F0C2",
+    "emoji": "☁️"
+  },
+  "computer": {
+    "nerd": "F108",
+    "emoji": "💻"
+  },
+  "cpp": {
+    "nerd": "E61D",
+    "emoji": "➕"
+  },
+  "cross": {
+    "nerd": "F00D",
+    "emoji": "✗"
+  },
+  "cross-alt": {
+    "nerd": "F05C",
+    "emoji": "❎"
+  },
+  "dart": {
+    "nerd": "E798",
+    "emoji": "🎯"
+  },
+  "delete": {
+    "nerd": "F1F8",
+    "emoji": "🗑️"
+  },
+  "diamond": {
+    "nerd": "25C6",
+    "unicode": "25C6",
+    "emoji": "🔶"
+  },
+  "docker": {
+    "nerd": "F308",
+    "emoji": "🐳"
+  },
+  "download": {
+    "nerd": "F019",
+    "emoji": "⬇️"
+  },
+  "edit": {
+    "nerd": "F040",
+    "emoji": "✏️"
+  },
+  "elixir": {
+    "nerd": "E62D",
+    "emoji": "💧"
+  },
+  "elm": {
+    "nerd": "E62C",
+    "emoji": "🌳"
+  },
+  "error": {
+    "nerd": "F00D",
+    "emoji": "❌"
+  },
+  "file": {
+    "nerd": "F15B",
+    "emoji": "📄"
+  },
+  "fire": {
+    "nerd": "F06D",
+    "emoji": "🔥"
+  },
+  "folder": {
+    "nerd": "F07B",
+    "emoji": "📁"
+  },
+  "forward": {
+    "nerd": "F04E",
+    "emoji": "⏩"
+  },
+  "gem": {
+    "nerd": "F219",
+    "emoji": "💎"
+  },
+  "git": {
+    "nerd": "F1D3",
+    "emoji": "🔀"
+  },
+  "globe": {
+    "nerd": "F0AC",
+    "emoji": "🌐"
+  },
+  "go": {
+    "nerd": "E627",
+    "emoji": "🐹"
+  },
+  "haskell": {
+    "nerd": "E777",
+    "emoji": "λ"
+  },
+  "heart": {
+    "nerd": "F004",
+    "emoji": "❤️"
+  },
+  "info": {
+    "nerd": "F05A",
+    "emoji": "ℹ️"
+  },
+  "info-bracket": {
+    "nerd": "F129",
+    "emoji": "ℹ️"
+  },
+  "input-bracket": {
+    "nerd": "F11C",
+    "emoji": "⌨️"
+  },
+  "install": {
+    "nerd": "F487",
+    "emoji": "📦"
+  },
+  "java": {
+    "nerd": "E256",
+    "emoji": "☕"
+  },
+  "julia": {
+    "nerd": "E624",
+    "emoji": "∘"
+  },
+  "key": {
+    "nerd": "F084",
+    "emoji": "🔑"
+  },
+  "kotlin": {
+    "nerd": "E634",
+    "emoji": "🎯"
+  },
+  "link": {
+    "nerd": "F0C1",
+    "emoji": "🔗"
+  },
+  "loading": {
+    "nerd": "F110",
+    "emoji": "⏳"
+  },
+  "lock": {
+    "nerd": "F023",
+    "emoji": "🔒"
+  },
+  "lua": {
+    "nerd": "E620",
+    "emoji": "🌙"
+  },
+  "node": {
+    "nerd": "E718",
+    "emoji": "🟩"
+  },
+  "npm": {
+    "nerd": "E71E",
+    "emoji": "📦"
+  },
+  "palette": {
+    "nerd": "F1FC",
+    "emoji": "🎨"
+  },
+  "php": {
+    "nerd": "E608",
+    "emoji": "🐘"
+  },
+  "pl-arrow-left": {
+    "nerd": "E0B2"
+  },
+  "pl-arrow-right": {
+    "nerd": "E0B0"
+  },
+  "pl-cap-left": {
+    "nerd": "E0B6"
+  },
+  "pl-cap-right": {
+    "nerd": "E0B4"
+  },
+  "plug": {
+    "nerd": "F1E6",
+    "emoji": "🔌"
+  },
+  "pointer": {
+    "nerd": "276F",
+    "unicode": "276F",
+    "emoji": "👉"
+  },
+  "prompt": {
+    "nerd": "F120",
+    "emoji": "›"
+  },
+  "python": {
+    "nerd": "E235",
+    "emoji": "🐍"
+  },
+  "question": {
+    "nerd": "F059",
+    "emoji": "❓"
+  },
+  "refresh": {
+    "nerd": "F021",
+    "emoji": "🔄"
+  },
+  "robot": {
+    "nerd": "E28C",
+    "emoji": "🤖"
+  },
+  "rocket": {
+    "nerd": "F135",
+    "emoji": "🚀"
+  },
+  "ruby": {
+    "nerd": "E791",
+    "emoji": "💎"
+  },
+  "rust": {
+    "nerd": "F1617",
+    "emoji": "⚙️"
+  },
+  "scala": {
+    "nerd": "E737",
+    "emoji": "⚖️"
+  },
+  "search": {
+    "nerd": "F002",
+    "emoji": "🔍"
+  },
+  "settings": {
+    "nerd": "F013",
+    "emoji": "⚙️"
+  },
+  "square": {
+    "nerd": "25A0",
+    "unicode": "25A0",
+    "emoji": "🟦"
+  },
+  "square-empty": {
+    "nerd": "25A1",
+    "unicode": "25A1",
+    "emoji": "⬜"
+  },
+  "star": {
+    "nerd": "F005",
+    "emoji": "⭐"
+  },
+  "starter": {
+    "nerd": "F04B",
+    "emoji": "▶️"
+  },
+  "success": {
+    "nerd": "F00C",
+    "emoji": "✅"
+  },
+  "swift": {
+    "nerd": "E755",
+    "emoji": "🦅"
+  },
+  "table": {
+    "nerd": "F0CE",
+    "emoji": "📋"
+  },
+  "thumbs-up": {
+    "nerd": "F164",
+    "emoji": "👍"
+  },
+  "tools": {
+    "nerd": "F0AD",
+    "emoji": "🛠️"
+  },
+  "triangle": {
+    "nerd": "25B2",
+    "unicode": "25B2",
+    "emoji": "🔺"
+  },
+  "unlock": {
+    "nerd": "F09C",
+    "emoji": "🔓"
+  },
+  "upload": {
+    "nerd": "F093",
+    "emoji": "⬆️"
+  },
+  "user-bracket": {
+    "nerd": "F007",
+    "emoji": "👤"
+  },
+  "warn-bracket": {
+    "nerd": "F12A",
+    "emoji": "⚠️"
+  },
+  "warning": {
+    "nerd": "F071",
+    "emoji": "⚠️"
+  },
+  "zig": {
+    "nerd": "E6A9",
+    "emoji": "⚡"
+  }
 }
