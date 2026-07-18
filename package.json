@@ -17,6 +17,8 @@
   },
   "files": [
     "dist",
+    "zsh",
+    "glyphs.plugin.zsh",
     "glyphs.json",
     "README.md",
     "LICENSE"

@@ -9,7 +9,7 @@
 // escape-safe) or a literal emoji string (may be a multi-scalar grapheme
 // cluster, emitted verbatim). The prefix is a parameter (default ICON); this
 // library names no specific consumer.
-import { readFileSync, writeFileSync } from "fs"
+import { readFileSync, writeFileSync, mkdirSync } from "fs"
 import { fileURLToPath } from "url"
 import { dirname, join } from "path"
 
@@ -62,25 +62,58 @@ const ts = [
 ].join("\n")
 writeFileSync(join(root, "src", "generated.ts"), ts)
 
-// --- zsh: glyphs.plugin.zsh (default install: ICON_ prefix, nerd variant) ---
-const zshLines = (prefix, variant) =>
-  names
-    .filter((n) => data[n][variant] != null)
-    .map(
-      (n) =>
-        `${prefix}_${upper(n)}=${zshEscape(toChar(variant, data[n][variant]))}`,
-    )
-const zsh = [
+// --- zsh: per-variant ICON_ files + default plugin entrypoint ---
+// The zsh/ files let a consumer text-substitute the ICON_ prefix into its own
+// namespace (e.g. shui: `sed 's/^ICON_/SHUI_ICON_/'`) without running node —
+// values stay escape-safe by construction. `full` emits every name (empty where
+// the variant is absent) so cross-set parity is preserved downstream; the thin
+// unicode set emits only the glyphs that carry a plain-Unicode fallback.
+mkdirSync(join(root, "zsh"), { recursive: true })
+
+const zshVar = (variant, n) => {
+  const v = data[n][variant]
+  return `ICON_${upper(n)}=${v != null ? zshEscape(toChar(variant, v)) : "''"}`
+}
+const zshFile = (variant, full, blurb) =>
+  [
+    banner("#"),
+    `# ICON_* variables — ${blurb}`,
+    "",
+    ...names
+      .filter((n) => full || data[n][variant] != null)
+      .map((n) => zshVar(variant, n)),
+    "",
+  ].join("\n")
+
+writeFileSync(
+  join(root, "zsh", "nerd.zsh"),
+  zshFile("nerd", true, "Nerd Font glyphs (requires a Nerd Font)."),
+)
+writeFileSync(
+  join(root, "zsh", "emoji.zsh"),
+  zshFile(
+    "emoji",
+    true,
+    "Unicode emoji; empty where a glyph has no emoji equivalent.",
+  ),
+)
+writeFileSync(
+  join(root, "zsh", "unicode.zsh"),
+  zshFile("unicode", false, "plain-Unicode fallbacks (geometric shapes only)."),
+)
+
+// glyphs.plugin.zsh — default entrypoint for zsh plugin managers (nerd, ICON_).
+const plugin = [
   banner("#"),
-  "# Source this file for ICON_* variables (Nerd Font glyphs).",
-  "# Consumers wanting a different prefix or variant call renderZsh() from the",
-  "# published package rather than sourcing this default.",
+  "# Default entrypoint: Nerd Font glyphs as ICON_* variables.",
+  "# Other variants live in zsh/<variant>.zsh; for a custom prefix, text-",
+  "# substitute ICON_ (e.g. sed 's/^ICON_/MYPREFIX_ICON_/').",
   "",
-  ...zshLines("ICON", "nerd"),
+  'source "${0:A:h}/zsh/nerd.zsh"',
   "",
 ].join("\n")
-writeFileSync(join(root, "glyphs.plugin.zsh"), zsh)
+writeFileSync(join(root, "glyphs.plugin.zsh"), plugin)
 
 console.log(
-  `Generated src/generated.ts and glyphs.plugin.zsh (${names.length} glyphs)`,
+  `Generated src/generated.ts, glyphs.plugin.zsh, zsh/{nerd,emoji,unicode}.zsh (${names.length} glyphs)`,
 )
