@@ -207,6 +207,71 @@
     "nerd": "F084",
     "emoji": "🔑"
   },
+  "key-backspace": {
+    "nerd": "232B",
+    "unicode": "232B",
+    "emoji": "⌫"
+  },
+  "key-command": {
+    "nerd": "2318",
+    "unicode": "2318",
+    "emoji": "⌘"
+  },
+  "key-control": {
+    "nerd": "2303",
+    "unicode": "2303",
+    "emoji": "⌃"
+  },
+  "key-down": {
+    "nerd": "2193",
+    "unicode": "2193",
+    "emoji": "↓"
+  },
+  "key-enter": {
+    "nerd": "21B5",
+    "unicode": "21B5",
+    "emoji": "↵"
+  },
+  "key-escape": {
+    "nerd": "238B",
+    "unicode": "238B",
+    "emoji": "⎋"
+  },
+  "key-left": {
+    "nerd": "2190",
+    "unicode": "2190",
+    "emoji": "←"
+  },
+  "key-option": {
+    "nerd": "2325",
+    "unicode": "2325",
+    "emoji": "⌥"
+  },
+  "key-right": {
+    "nerd": "2192",
+    "unicode": "2192",
+    "emoji": "→"
+  },
+  "key-shift": {
+    "nerd": "21E7",
+    "unicode": "21E7",
+    "emoji": "⇧"
+  },
+  "key-space": {
+    "nerd": "2423",
+    "unicode": "2423",
+    "emoji": "␣"
+  },
+  "key-tab": {
+    "nerd": "21E5",
+    "unicode": "21E5",
+    "emoji": "⇥"
+  },
+  "key-up": {
+    "nerd": "2191",
+    "unicode": "2191",
+    "emoji": "↑"
+  },
   "kotlin": {
     "nerd": "E634",
     "emoji": "🎯"
