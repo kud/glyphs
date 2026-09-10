@@ -317,8 +317,14 @@
   "pl-cap-left": {
     "nerd": "E0B6"
   },
+  "pl-cap-left-thin": {
+    "nerd": "E0B7"
+  },
   "pl-cap-right": {
     "nerd": "E0B4"
+  },
+  "pl-cap-right-thin": {
+    "nerd": "E0B5"
   },
   "plug": {
     "nerd": "F1E6",
