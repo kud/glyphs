@@ -99,7 +99,7 @@ writeFileSync(
 )
 writeFileSync(
   join(root, "zsh", "unicode.zsh"),
-  zshFile("unicode", false, "plain-Unicode fallbacks (geometric shapes only)."),
+  zshFile("unicode", false, "plain-Unicode fallbacks (shapes and status marks)."),
 )
 
 // glyphs.plugin.zsh — default entrypoint for zsh plugin managers (nerd, ICON_).

@@ -18,6 +18,13 @@ describe("glyphs data", () => {
     expect(cps(glyphs.bullet.emoji!)).toEqual(["2022"])
   })
 
+  it("gives the four status marks a plain-Unicode variant", () => {
+    expect(cps(glyph("check", "unicode"))).toEqual(["2713"])
+    expect(cps(glyph("cross", "unicode"))).toEqual(["2717"])
+    expect(cps(glyph("warning", "unicode"))).toEqual(["26A0"])
+    expect(cps(glyph("info", "unicode"))).toEqual(["2139"])
+  })
+
   it("keeps multi-scalar emoji intact", () => {
     // ⚠️ is U+26A0 U+FE0F — a grapheme cluster, not a single scalar.
     expect(cps(glyph("warning", "emoji"))).toEqual(["26A0", "FE0F"])

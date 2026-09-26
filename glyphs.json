@@ -58,6 +58,7 @@
   },
   "check": {
     "nerd": "F00C",
+    "unicode": "2713",
     "emoji": "✓"
   },
   "check-alt": {
@@ -96,6 +97,7 @@
   },
   "cross": {
     "nerd": "F00D",
+    "unicode": "2717",
     "emoji": "✗"
   },
   "cross-alt": {
@@ -181,6 +183,7 @@
   },
   "info": {
     "nerd": "F05A",
+    "unicode": "2139",
     "emoji": "ℹ️"
   },
   "info-bracket": {
@@ -440,6 +443,7 @@
   },
   "warning": {
     "nerd": "F071",
+    "unicode": "26A0",
     "emoji": "⚠️"
   },
   "zig": {
