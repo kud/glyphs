@@ -4,6 +4,14 @@ All notable changes to this project are documented here.
 
 ---
 
+## Unreleased
+
+### Breaking
+
+- Node 22 is now the minimum supported version (`engines.node` `>=22`, build target `node22`). Node 20 is end-of-life and the toolchain (vitest, tsup) no longer runs on it. CI now tests on Node 22 and the current LTS.
+
+---
+
 ## 0.4.0 — 2026-09-10
 
 ### Highlights
