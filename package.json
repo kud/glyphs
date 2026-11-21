@@ -20,6 +20,7 @@
     "zsh",
     "glyphs.plugin.zsh",
     "glyphs.json",
+    "colors.json",
     "README.md",
     "LICENSE"
   ],
