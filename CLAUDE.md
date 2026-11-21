@@ -23,12 +23,18 @@ to its variants:
   (`⚠️` = U+26A0 U+FE0F). Stored literally; escaped only on output.
 - `nerd` is expected on every glyph; `unicode` and `emoji` are optional.
 
+`colors.json` is the second hand-edited source: semantic colour tokens
+(`ansi16` floor, `ansi256` fallback, optional `hex`) and the state map (state →
+glyph name + colour token). Data only — never rendering or capability logic.
+
 ## Generated files — never hand-edit
 
 `npm run generate` reads `glyphs.json` and writes:
 
 - `src/generated.ts` — the typed `glyphs` record (variants as `\u{XXXX}`).
 - `glyphs.plugin.zsh` — a default zsh plugin: `ICON_*` vars, nerd variant.
+- `src/colors.generated.ts`, `zsh/colors.zsh` — from `colors.json`; the zsh
+  file is static `COLOR_*` / `STATE_*` assignments only.
 
 Both carry a "do not edit by hand" banner. After any `glyphs.json` change, run
 `npm run generate` and commit the regenerated outputs alongside it.
@@ -50,7 +56,7 @@ hardcoded `SHUI_ICON` alias or any project-specific name into the library.
 ## Commands
 
 ```zsh
-npm run generate   # regenerate outputs from glyphs.json
+npm run generate   # regenerate outputs from glyphs.json and colors.json
 npm run typecheck  # tsc --noEmit
 npm test           # vitest run
 npm run build      # generate + tsup → dist

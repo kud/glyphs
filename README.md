@@ -90,6 +90,58 @@ Escapes are produced by construction — never raw PUA bytes.
 > Nerd Font glyphs need a [Nerd Font](https://www.nerdfonts.com/) installed in
 > your terminal; without one they render as a `□` box.
 
+## Colour tokens
+
+`colors.json` holds a shared semantic colour vocabulary — data only, never
+rendering. Tokens mean the same thing in every consumer; they need not look
+identical.
+
+**The ANSI floor is the contract.** Every token has three layers: `ansi16` (a
+16-colour palette index, 0–15 — the meaning every consumer must honour),
+`ansi256` (the 256-colour fallback) and `hex` (an optional dark-truecolour
+layer). Using `hex` is the consumer's decision, taken only when the terminal
+has truecolour _and_ a known dark background; that logic does not live here.
+`muted` deliberately has no `hex`: it is always the terminal's bright black.
+
+| Token       | ansi16             | ansi256 | hex       |
+| ----------- | ------------------ | ------- | --------- |
+| `accent`    | 3 yellow           | 208     | `#FF8C00` |
+| `success`   | 2 green            | 79      | `#5FD7A7` |
+| `warning`   | 3 yellow           | 214     | `#FFB400` |
+| `error`     | 1 red              | 203     | `#FF5364` |
+| `info`      | 6 cyan             | 117     | `#89DDFF` |
+| `group`     | 5 magenta          | 176     | `#C792EA` |
+| `muted`     | 8 bright black     | 8       | —         |
+| `secondary` | 7 white            | 246     | `#999999` |
+| `dim`       | 8 bright black     | 241     | `#5C5E73` |
+| `track`     | 8 bright black     | 236     | `#2B323D` |
+| `link`      | 4 blue             | 111     | `#82AAFF` |
+| `added`     | 2 green            | 78      | `#4ADE80` |
+| `removed`   | 1 red              | 203     | `#FF6B6B` |
+
+States pair a glyph (which carries the meaning) with a colour token (which only
+reinforces it): `success` → `check` ✓, `error` → `cross` ✗, `warning` →
+`warning` ⚠, `info` → `info` ℹ, `pending` → `circle-empty` ○ in `muted`, and
+`running` → a spinner in `accent`.
+
+```ts
+import { colors, states } from "@kud/glyphs"
+import type { ColorToken, State } from "@kud/glyphs"
+
+colors.accent // { ansi16: 3, ansi256: 208, hex: "#FF8C00" }
+states.pending // { glyph: "circleEmpty", color: "muted", spinner: false }
+```
+
+In zsh, `zsh/colors.zsh` is static assignments only (no functions, no
+subshells), safe on a shell's startup path — `COLOR_ACCENT_ANSI16=3`,
+`COLOR_ACCENT_HEX='#FF8C00'`, `STATE_PENDING_GLYPH='CIRCLE_EMPTY'`,
+`STATE_PENDING_COLOR='MUTED'`. Re-prefix it like the glyph files:
+
+```zsh
+sed -E 's/^(COLOR|STATE)_/SHUI_&/' zsh/colors.zsh > colors.zsh
+# SHUI_COLOR_ACCENT_ANSI16=3
+```
+
 ## Adding a glyph
 
 Edit `glyphs.json`, then regenerate:
@@ -97,6 +149,10 @@ Edit `glyphs.json`, then regenerate:
 ```sh
 npm run generate   # glyphs.json -> src/generated.ts, glyphs.plugin.zsh, zsh/*.zsh
 ```
+
+Colours work the same way: edit `colors.json` and run `npm run generate`
+(also writes `src/colors.generated.ts` and `zsh/colors.zsh`). The tests run
+`node scripts/generate.mjs --check` and fail if any generated file has drifted.
 
 ## Development
 
