@@ -32,9 +32,9 @@ npm install @kud/glyphs
 ```ts
 import { glyphs, glyph, renderZsh } from "@kud/glyphs"
 
-glyphs.check.nerd // ""
-glyph("check") // "" — defaults to the nerd variant
-glyph("check", "emoji") // "✅"
+glyphs.check.nerd // nerd-font check mark (U+F00C)
+glyph("check") // same — defaults to the nerd variant
+glyph("check", "emoji") // "✓"
 glyph("plArrowRight", "unicode") // "" — absent variants resolve to ""
 ```
 
@@ -66,8 +66,8 @@ node, no runtime dependency, values untouched (the swap is anchored to the
 variable name, never the `$'\U…'` payload):
 
 ```zsh
-# nerd glyphs under a SHUI_ICON_ prefix
-curl -fsSL https://raw.githubusercontent.com/kud/glyphs/v0.3.0/zsh/nerd.zsh \
+# nerd glyphs under a SHUI_ICON_ prefix (swap `main` for a release tag to pin)
+curl -fsSL https://raw.githubusercontent.com/kud/glyphs/main/zsh/nerd.zsh \
   | sed 's/^ICON_/SHUI_ICON_/' > icons.zsh
 
 source icons.zsh
@@ -76,7 +76,8 @@ source icons.zsh
 #   SHUI_ICON_CROSS=$'\U0000F00D'
 ```
 
-Variants live at `zsh/{nerd,emoji,unicode}.zsh`. This is exactly how
+Variants live at `zsh/{nerd,emoji,unicode}.zsh` (`unicode.zsh` holds only the
+glyphs that have a plain-Unicode fallback). This is exactly how
 [shui](https://github.com/kud/shui) builds its icon sets — a `sed` re-prefix run
 only when it bumps this package, sourcing plain literal files at runtime.
 
@@ -94,7 +95,7 @@ Escapes are produced by construction — never raw PUA bytes.
 Edit `glyphs.json`, then regenerate:
 
 ```sh
-npm run generate   # glyphs.json -> src/generated.ts + glyphs.plugin.zsh
+npm run generate   # glyphs.json -> src/generated.ts, glyphs.plugin.zsh, zsh/*.zsh
 ```
 
 ## Development
@@ -104,7 +105,7 @@ git clone https://github.com/kud/glyphs.git
 cd glyphs
 npm install
 npm run generate
-npm run build      # tsup -> dist
+npm run build      # generate, then tsup -> dist
 npm run typecheck
 npm test
 ```
