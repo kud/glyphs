@@ -107,7 +107,7 @@ emit(
 )
 emit(
   "zsh/unicode.zsh",
-  zshFile("unicode", false, "plain-Unicode fallbacks (geometric shapes only)."),
+  zshFile("unicode", false, "plain-Unicode fallbacks, for glyphs that have one."),
 )
 
 // glyphs.plugin.zsh — default entrypoint for zsh plugin managers (nerd, ICON_).

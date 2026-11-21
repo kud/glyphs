@@ -3,7 +3,7 @@
 
 export const glyphs = {
   apple: { nerd: "\u{F179}", emoji: "\u{1F34E}" },
-  arrow: { nerd: "\u{F178}", emoji: "\u{2192}" },
+  arrow: { nerd: "\u{F178}", unicode: "\u{2192}", emoji: "\u{2192}" },
   arrowDown: { nerd: "\u{F063}", emoji: "\u{2193}" },
   arrowLeft: { nerd: "\u{F060}", emoji: "\u{2190}" },
   arrowRight: { nerd: "\u{F061}", emoji: "\u{2192}" },
@@ -35,7 +35,7 @@ export const glyphs = {
   edit: { nerd: "\u{F040}", emoji: "\u{270F}\u{FE0F}" },
   elixir: { nerd: "\u{E62D}", emoji: "\u{1F4A7}" },
   elm: { nerd: "\u{E62C}", emoji: "\u{1F333}" },
-  error: { nerd: "\u{F00D}", emoji: "\u{274C}" },
+  error: { nerd: "\u{F00D}", unicode: "\u{2717}", emoji: "\u{274C}" },
   file: { nerd: "\u{F15B}", emoji: "\u{1F4C4}" },
   fire: { nerd: "\u{F06D}", emoji: "\u{1F525}" },
   folder: { nerd: "\u{F07B}", emoji: "\u{1F4C1}" },
@@ -46,7 +46,7 @@ export const glyphs = {
   go: { nerd: "\u{E627}", emoji: "\u{1F439}" },
   haskell: { nerd: "\u{E777}", emoji: "\u{3BB}" },
   heart: { nerd: "\u{F004}", emoji: "\u{2764}\u{FE0F}" },
-  info: { nerd: "\u{F05A}", emoji: "\u{2139}\u{FE0F}" },
+  info: { nerd: "\u{F05A}", unicode: "\u{2139}", emoji: "\u{2139}\u{FE0F}" },
   infoBracket: { nerd: "\u{F129}", emoji: "\u{2139}\u{FE0F}" },
   inputBracket: { nerd: "\u{F11C}", emoji: "\u{2328}\u{FE0F}" },
   install: { nerd: "\u{F487}", emoji: "\u{1F4E6}" },
@@ -98,7 +98,7 @@ export const glyphs = {
   squareEmpty: { nerd: "\u{25A1}", unicode: "\u{25A1}", emoji: "\u{2B1C}" },
   star: { nerd: "\u{F005}", emoji: "\u{2B50}" },
   starter: { nerd: "\u{F04B}", emoji: "\u{25B6}\u{FE0F}" },
-  success: { nerd: "\u{F00C}", emoji: "\u{2705}" },
+  success: { nerd: "\u{F00C}", unicode: "\u{2713}", emoji: "\u{2705}" },
   swift: { nerd: "\u{E755}", emoji: "\u{1F985}" },
   table: { nerd: "\u{F0CE}", emoji: "\u{1F4CB}" },
   thumbsUp: { nerd: "\u{F164}", emoji: "\u{1F44D}" },
@@ -108,7 +108,7 @@ export const glyphs = {
   upload: { nerd: "\u{F093}", emoji: "\u{2B06}\u{FE0F}" },
   userBracket: { nerd: "\u{F007}", emoji: "\u{1F464}" },
   warnBracket: { nerd: "\u{F12A}", emoji: "\u{26A0}\u{FE0F}" },
-  warning: { nerd: "\u{F071}", emoji: "\u{26A0}\u{FE0F}" },
+  warning: { nerd: "\u{F071}", unicode: "\u{26A0}", emoji: "\u{26A0}\u{FE0F}" },
   zig: { nerd: "\u{E6A9}", emoji: "\u{26A1}" },
 } as const
 
