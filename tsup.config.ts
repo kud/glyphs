@@ -5,6 +5,6 @@ export default defineConfig({
   format: ["esm"],
   dts: false,
   clean: true,
-  target: "node20",
+  target: "node22",
   treeshake: true,
 })
