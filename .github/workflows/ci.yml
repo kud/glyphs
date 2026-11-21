@@ -6,7 +6,8 @@ on:
   pull_request:
 
 jobs:
-  test:
+  node:
+    name: node ${{ matrix.node-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,3 +22,12 @@ jobs:
       - run: npm run typecheck
       - run: npm run test
       - run: npm run build
+
+  # The ruleset on main requires a check named "test": this one stands for
+  # every Node version in the matrix, so the requirement survives matrix changes.
+  test:
+    needs: node
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - run: test "${{ needs.node.result }}" = success
