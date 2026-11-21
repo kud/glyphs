@@ -3,6 +3,15 @@ import { glyphs, type GlyphName, type Variant } from "./generated.js"
 export { glyphs }
 export type { GlyphName, Variant }
 export { renderZsh, type RenderZshOptions } from "./render.js"
+export {
+  colors,
+  states,
+  type Ansi16,
+  type ColorValue,
+  type ColorToken,
+  type StateStyle,
+  type State,
+} from "./colors.generated.js"
 
 /**
  * Resolve a glyph to its rendered string for the given variant (default

@@ -1,0 +1,25 @@
+{
+  "tokens": {
+    "accent": { "ansi16": 3, "ansi256": 208, "hex": "#FF8C00" },
+    "success": { "ansi16": 2, "ansi256": 79, "hex": "#5FD7A7" },
+    "warning": { "ansi16": 3, "ansi256": 214, "hex": "#FFB400" },
+    "error": { "ansi16": 1, "ansi256": 203, "hex": "#FF5364" },
+    "info": { "ansi16": 6, "ansi256": 117, "hex": "#89DDFF" },
+    "group": { "ansi16": 5, "ansi256": 176, "hex": "#C792EA" },
+    "muted": { "ansi16": 8, "ansi256": 8, "hex": null },
+    "secondary": { "ansi16": 7, "ansi256": 246, "hex": "#999999" },
+    "dim": { "ansi16": 8, "ansi256": 241, "hex": "#5C5E73" },
+    "track": { "ansi16": 8, "ansi256": 236, "hex": "#2B323D" },
+    "link": { "ansi16": 4, "ansi256": 111, "hex": "#82AAFF" },
+    "added": { "ansi16": 2, "ansi256": 78, "hex": "#4ADE80" },
+    "removed": { "ansi16": 1, "ansi256": 203, "hex": "#FF6B6B" }
+  },
+  "states": {
+    "success": { "glyph": "check", "color": "success", "spinner": false },
+    "error": { "glyph": "cross", "color": "error", "spinner": false },
+    "warning": { "glyph": "warning", "color": "warning", "spinner": false },
+    "info": { "glyph": "info", "color": "info", "spinner": false },
+    "pending": { "glyph": "circle-empty", "color": "muted", "spinner": false },
+    "running": { "glyph": null, "color": "accent", "spinner": true }
+  }
+}
