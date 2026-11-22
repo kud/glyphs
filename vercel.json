@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci",
+  "buildCommand": "npm run demo:build",
+  "outputDirectory": "demo/dist",
+  "rewrites": [
+    {
+      "source": "/projects/glyphs/demo",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/projects/glyphs/demo/:path*",
+      "destination": "/:path*"
+    }
+  ]
+}

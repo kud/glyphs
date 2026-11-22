@@ -1,0 +1,539 @@
+@font-face {
+  font-family: "Symbols Nerd Font Mono";
+  src: url("./fonts/SymbolsNerdFontMono-Regular.woff2") format("woff2");
+  font-display: block;
+}
+
+:root {
+  --paper: #fff7eb;
+  --card: #fffdf8;
+  --ink: #392e27;
+  --muted: #7a6a5c;
+  --rule: #ecdcc2;
+  --tint: #f7e5ca;
+  --accent: #b4532a;
+  --accent-ink: #ffffff;
+  --focus: #2f4fd6;
+  --term-bg: #14161c;
+  --term-ink: #d7dae0;
+  --term-dim: #6c7180;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --emoji: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  --nerd: "Symbols Nerd Font Mono", var(--mono);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #17130f;
+    --card: #201a15;
+    --ink: #f1e6d6;
+    --muted: #b3a291;
+    --rule: #3a3029;
+    --tint: #2c241d;
+    --accent: #eebb6b;
+    --accent-ink: #1b1510;
+    --focus: #8fa8ff;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #17130f;
+  --card: #201a15;
+  --ink: #f1e6d6;
+  --muted: #b3a291;
+  --rule: #3a3029;
+  --tint: #2c241d;
+  --accent: #eebb6b;
+  --accent-ink: #1b1510;
+  --focus: #8fa8ff;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.5 var(--sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.92em;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8px 12px;
+  border-radius: 6px;
+  z-index: 10;
+}
+.skip:focus {
+  top: 12px;
+}
+
+/* --- layout -------------------------------------------------------------- */
+
+.masthead-inner,
+main,
+.footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.masthead {
+  border-bottom: 1px solid var(--rule);
+}
+.masthead-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 40px;
+  padding-bottom: 24px;
+}
+h1 {
+  font: 700 clamp(1.8rem, 5vw, 2.6rem) / 1.1 var(--mono);
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+.lede {
+  margin: 0;
+  max-width: 60ch;
+  color: var(--muted);
+}
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 40px 0 8px;
+}
+.section-note {
+  margin: 0 0 16px;
+  max-width: 70ch;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.footer {
+  padding-top: 32px;
+  padding-bottom: 48px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+/* --- buttons ------------------------------------------------------------- */
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.theme-toggle,
+.copy {
+  border: 1px solid var(--rule);
+  background: var(--card);
+  border-radius: 999px;
+}
+.theme-toggle {
+  padding: 4px 14px;
+}
+.theme-toggle[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.copy {
+  font: 600 0.75rem/1 var(--mono);
+  padding: 6px 9px;
+  min-height: 28px;
+  transition: background 120ms, color 120ms;
+}
+.copy:hover {
+  background: var(--tint);
+}
+.copy.is-copied {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+
+/* --- terminal ------------------------------------------------------------ */
+
+.terminal {
+  background: var(--term-bg);
+  color: var(--term-ink);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.05), 0 12px 32px -16px rgb(0 0 0 / 0.45);
+}
+.terminal-bar {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px;
+  background: #1d2028;
+}
+.terminal-bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3a3f4b;
+}
+.terminal-body {
+  padding: 14px 16px 16px;
+  font: 14px/1.7 var(--mono);
+  overflow-x: auto;
+}
+.term-line {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  white-space: nowrap;
+}
+.term-icon {
+  display: inline-block;
+  min-width: 1.4em;
+  text-align: center;
+}
+.term-glyph {
+  display: none;
+}
+:root:not([data-variant]) .term-glyph[data-variant="nerd"],
+:root[data-variant="all"] .term-glyph[data-variant="nerd"],
+:root[data-variant="nerd"] .term-glyph[data-variant="nerd"],
+:root[data-variant="unicode"] .term-glyph[data-variant="unicode"],
+:root[data-variant="emoji"] .term-glyph[data-variant="emoji"] {
+  display: inline;
+}
+.term-meta {
+  margin-left: auto;
+  padding-left: 16px;
+  color: var(--term-dim);
+  font-size: 0.85em;
+}
+
+.swatches-wrap {
+  margin-top: 16px;
+}
+.swatches-wrap summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 4px 0;
+}
+.swatches {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
+  gap: 8px;
+}
+.swatch {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid var(--rule);
+  background: var(--card);
+  border-radius: 10px;
+}
+.swatch-fill {
+  grid-row: 1 / span 2;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.12);
+}
+.swatch-name {
+  font-weight: 700;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 10px;
+  font: 0.75rem/1.5 var(--mono);
+  color: var(--muted);
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.chip-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.2);
+}
+.chip-note {
+  opacity: 0.8;
+}
+
+/* --- catalogue controls -------------------------------------------------- */
+
+.controls {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+  padding: 12px 0;
+  background: var(--paper);
+}
+.search {
+  flex: 1 1 260px;
+}
+.search input {
+  width: 100%;
+  font: inherit;
+  padding: 9px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+}
+.search input:focus-visible {
+  outline-offset: 0;
+}
+
+.switcher {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 3px;
+  margin: 0;
+  background: var(--card);
+}
+.switcher label {
+  position: relative;
+}
+.switcher input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.switcher span {
+  display: block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+.switcher input:checked + span {
+  background: var(--ink);
+  color: var(--paper);
+}
+.switcher input:focus-visible + span {
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.status {
+  margin: 0 0 12px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* --- cards --------------------------------------------------------------- */
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 12px;
+}
+.card {
+  border: 1px solid var(--rule);
+  background: var(--card);
+  border-radius: 14px;
+  padding: 10px 12px 12px;
+}
+.card[hidden] {
+  display: none;
+}
+.card-name {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+.copy--name {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-color: transparent;
+  background: transparent;
+  padding: 4px 8px;
+  margin-left: -8px;
+  font: 700 0.95rem/1.2 var(--mono);
+}
+.copy--name svg {
+  opacity: 0.5;
+}
+.copy--name:hover svg {
+  opacity: 1;
+}
+.copy--name code {
+  font-size: inherit;
+}
+
+.variants {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.variant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4px;
+  border-radius: 10px;
+  background: var(--tint);
+  min-width: 0;
+}
+.variant.is-absent {
+  background: transparent;
+  border: 1px dashed var(--rule);
+  color: var(--muted);
+}
+.variant-label {
+  font: 600 0.68rem/1 var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.glyph {
+  font-size: 2rem;
+  line-height: 1.2;
+  height: 1.2em;
+  display: flex;
+  align-items: center;
+}
+.glyph--nerd {
+  font-family: var(--nerd);
+}
+.glyph--unicode {
+  font-family: var(--mono);
+}
+.glyph--emoji {
+  font-family: var(--emoji);
+}
+.cp {
+  font: 0.72rem/1.3 var(--mono);
+  color: var(--muted);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.copies {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Single-variant views show one large column. */
+:root[data-variant="nerd"] .variant:not([data-variant="nerd"]),
+:root[data-variant="unicode"] .variant:not([data-variant="unicode"]),
+:root[data-variant="emoji"] .variant:not([data-variant="emoji"]) {
+  display: none;
+}
+:root[data-variant="nerd"] .variants,
+:root[data-variant="unicode"] .variants,
+:root[data-variant="emoji"] .variants {
+  grid-template-columns: 1fr;
+}
+:root[data-variant="nerd"] .glyph,
+:root[data-variant="unicode"] .glyph,
+:root[data-variant="emoji"] .glyph {
+  font-size: 2.75rem;
+}
+
+.empty {
+  color: var(--muted);
+}
+
+/* --- toast --------------------------------------------------------------- */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translate(-50%, 16px);
+  max-width: calc(100% - 32px);
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font: 0.875rem/1.4 var(--mono);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms, transform 150ms;
+  overflow-wrap: anywhere;
+}
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 480px) {
+  .term-meta {
+    display: none;
+  }
+  .glyph {
+    font-size: 1.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
