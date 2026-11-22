@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Every @kud/glyphs glyph in its Nerd Font, Unicode and emoji variants, with one-click JavaScript and zsh escapes."
+    />
+    <link rel="canonical" href="https://kud.io/projects/glyphs/demo" />
+    <title>glyphs catalogue</title>
+    <script>
+      // Apply a stored theme before first paint; absent or unreadable, follow the OS.
+      try {
+        const t = localStorage.getItem("glyphs-theme")
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t
+      } catch {}
+    </script>
+    <script type="module" src="./main.ts"></script>
+  </head>
+  <body>
+    <a class="skip" href="#catalogue">Skip to the catalogue</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <div>
+          <h1>@kud/glyphs</h1>
+          <p class="lede">
+            <!--glyph-count--> terminal glyphs, each in its Nerd Font, Unicode and emoji
+            variants, generated from <code>glyphs.json</code>. Every copy button
+            hands you an escape, never a raw byte.
+          </p>
+        </div>
+        <nav class="links" aria-label="Project">
+          <a href="https://kud.io/projects/glyphs">Website</a>
+          <a href="https://kud.io/projects/glyphs/docs">Docs</a>
+          <a href="https://github.com/kud/glyphs">GitHub</a>
+          <button type="button" class="theme-toggle" aria-pressed="false">
+            <span class="theme-toggle-label">Dark theme</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="terminal-section" aria-labelledby="terminal-title">
+        <h2 id="terminal-title">States in a terminal</h2>
+        <p class="section-note">
+          The state vocabulary from <code>colors.json</code> on a dark truecolour
+          terminal: each state pairs a glyph with a colour token's
+          <code>hex</code> layer (or its <code>ansi256</code> layer where hex is
+          absent). The glyphs follow the variant switcher below.
+        </p>
+        <div class="terminal" role="group" aria-label="Terminal preview">
+          <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="terminal-body">
+<!--terminal-->
+          </div>
+        </div>
+        <details class="swatches-wrap" open>
+          <summary>Colour tokens</summary>
+          <ul class="swatches">
+<!--swatches-->
+          </ul>
+        </details>
+      </section>
+
+      <section class="catalogue-section" aria-labelledby="catalogue-title">
+        <h2 id="catalogue-title">Catalogue</h2>
+        <div class="controls">
+          <label class="search">
+            <span class="visually-hidden">Search glyphs by name or codepoint</span>
+            <input
+              type="search"
+              id="search"
+              placeholder="Search by name or codepoint (F00C)"
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </label>
+          <fieldset class="switcher">
+            <legend class="visually-hidden">Variant</legend>
+            <label><input type="radio" name="variant" value="all" checked /><span>All</span></label>
+            <label><input type="radio" name="variant" value="nerd" /><span>Nerd</span></label>
+            <label><input type="radio" name="variant" value="unicode" /><span>Unicode</span></label>
+            <label><input type="radio" name="variant" value="emoji" /><span>Emoji</span></label>
+          </fieldset>
+        </div>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+        <ul class="grid" id="catalogue">
+<!--catalogue-->
+        </ul>
+        <p class="empty" id="empty" hidden>No glyph matches that search.</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Nerd Font glyphs rendered with the bundled Symbols Nerd Font Mono
+        (Nerd Fonts, MIT). Emoji render in your system's emoji font.
+      </p>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

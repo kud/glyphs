@@ -7,7 +7,7 @@
 
 **Multi-language source of truth for terminal glyphs — Nerd Font codepoints and unicode fallbacks, typed and escape-safe**
 
-<a href="https://kud.io/projects/glyphs">Website</a> · <a href="https://kud.io/projects/glyphs/docs">Documentation</a>
+<a href="https://kud.io/projects/glyphs">Website</a> · <a href="https://kud.io/projects/glyphs/docs">Documentation</a> · <a href="https://kud.io/projects/glyphs/demo">Demo</a>
 
 </div>
 
@@ -140,6 +140,29 @@ subshells), safe on a shell's startup path — `COLOR_ACCENT_ANSI16=3`,
 ```zsh
 sed -E 's/^(COLOR|STATE)_/SHUI_&/' zsh/colors.zsh > colors.zsh
 # SHUI_COLOR_ACCENT_ANSI16=3
+```
+
+## Demo
+
+Every glyph, rendered: **[kud.io/projects/glyphs/demo](https://kud.io/projects/glyphs/demo)**.
+Each card shows the Nerd Font, Unicode and emoji variants side by side, with
+their codepoints and one-click copy of the JavaScript (`\u{F00C}`) and zsh
+(`$'\U0000F00C'`) escapes. A switcher narrows the view to one variant, and a
+terminal strip shows the state vocabulary in its `colors.json` colours.
+
+<p align="center">
+  <img src="assets/demo-1280.png" alt="The glyphs catalogue at desktop width: a terminal preview of the states, the colour tokens, and glyph cards" width="720" />
+  <img src="assets/demo-400.png" alt="The glyphs catalogue at phone width" width="220" />
+</p>
+
+The page is generated from `glyphs.json` and `colors.json` at build time, so it
+never drifts from the data (a test checks that every glyph is listed). It
+bundles [Symbols Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts) so
+the Private-Use-Area glyphs render without a local Nerd Font.
+
+```sh
+npm run demo          # dev server with live reload on glyphs.json / colors.json
+npm run demo:build    # static build into demo/dist, served under /projects/glyphs/demo
 ```
 
 ## Adding a glyph

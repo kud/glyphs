@@ -60,4 +60,9 @@ npm run generate   # regenerate outputs from glyphs.json and colors.json
 npm run typecheck  # tsc --noEmit
 npm test           # vitest run
 npm run build      # generate + tsup → dist
+npm run demo       # web catalogue dev server (demo/, rendered from the JSON)
+npm run demo:build # static catalogue → demo/dist (Vercel, /projects/glyphs/demo)
 ```
+
+The catalogue in `demo/` is rendered from the two JSON sources at build time;
+it carries characters only as numeric references built from the hex.

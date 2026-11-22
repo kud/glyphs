@@ -6,6 +6,10 @@ All notable changes to this project are documented here.
 
 ## Unreleased
 
+### Highlights
+
+- Added a web catalogue of every glyph, generated from `glyphs.json` and `colors.json`: each variant rendered side by side with its codepoints and one-click JS and zsh escapes, a variant switcher, search, and a terminal preview of the state colours. Run it with `npm run demo`; hosted at [kud.io/projects/glyphs/demo](https://kud.io/projects/glyphs/demo).
+
 ### Breaking
 
 - Node 22 is now the minimum supported version (`engines.node` `>=22`, build target `node22`). Node 20 is end-of-life and the toolchain (vitest, tsup) no longer runs on it. CI now tests on Node 22 and the current LTS.

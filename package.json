@@ -30,15 +30,20 @@
   "scripts": {
     "build": "npm run generate && tsup && tsc -p tsconfig.build.json --emitDeclarationOnly",
     "dev": "tsup --watch",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p demo",
     "test": "vitest run",
     "test:watch": "vitest",
-    "generate": "node scripts/generate.mjs"
+    "generate": "node scripts/generate.mjs",
+    "demo": "node scripts/subset-font.mjs && vite --config vite.demo.config.ts",
+    "demo:build": "node scripts/subset-font.mjs && vite build --config vite.demo.config.ts",
+    "demo:preview": "node scripts/subset-font.mjs && vite preview --config vite.demo.config.ts"
   },
   "devDependencies": {
     "@types/node": "26.6.6",
+    "subset-font": "2.9.0",
     "tsup": "9.0.0",
     "typescript": "7.0.2",
+    "vite": "8.3.8",
     "vitest": "5.1.1"
   }
 }
