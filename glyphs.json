@@ -59,6 +59,7 @@
   },
   "check": {
     "nerd": "F00C",
+    "unicode": "2713",
     "emoji": "✓"
   },
   "check-alt": {
@@ -97,6 +98,7 @@
   },
   "cross": {
     "nerd": "F00D",
+    "unicode": "2717",
     "emoji": "✗"
   },
   "cross-alt": {

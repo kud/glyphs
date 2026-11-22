@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest"
+import { readFileSync } from "fs"
+import { fileURLToPath } from "url"
 import { glyphs, glyph, renderZsh } from "./index.js"
+
+const root = fileURLToPath(new URL("..", import.meta.url))
 
 const cps = (s: string) =>
   [...s].map((c) => c.codePointAt(0)!.toString(16).toUpperCase())
@@ -16,6 +20,13 @@ describe("glyphs data", () => {
     expect(cps(glyphs.bullet.nerd)).toEqual(["2022"])
     expect(cps(glyphs.bullet.unicode!)).toEqual(["203A"])
     expect(cps(glyphs.bullet.emoji!)).toEqual(["2022"])
+  })
+
+  it("exposes the unicode check and cross, aligned with success and error", () => {
+    expect(cps(glyph("check", "unicode"))).toEqual(["2713"])
+    expect(cps(glyph("cross", "unicode"))).toEqual(["2717"])
+    expect(glyph("check", "unicode")).toBe(glyph("success", "unicode"))
+    expect(glyph("cross", "unicode")).toBe(glyph("error", "unicode"))
   })
 
   it("keeps multi-scalar emoji intact", () => {
@@ -43,6 +54,22 @@ describe("renderZsh", () => {
 
   it("defaults to the ICON prefix and nerd variant", () => {
     expect(renderZsh()).toContain("ICON_CHECK=$'\\U0000F00C'")
+  })
+
+  it("escapes the unicode check and cross by construction", () => {
+    const out = renderZsh({ prefix: "SHUI_ICON", variant: "unicode" })
+    expect(out).toContain("SHUI_ICON_CHECK=$'\\U00002713'")
+    expect(out).toContain("SHUI_ICON_CROSS=$'\\U00002717'")
+  })
+
+  it("ships the unicode check and cross escaped in zsh/unicode.zsh", () => {
+    const zsh = readFileSync(`${root}zsh/unicode.zsh`, "utf8")
+    const lines = zsh.split("\n")
+    expect(lines).toContain("ICON_CHECK=$'\\U00002713'")
+    expect(lines).toContain("ICON_CROSS=$'\\U00002717'")
+    // Escapes only: no literal non-ASCII character in any assignment.
+    for (const l of lines.filter((l) => l && !l.startsWith("#")))
+      expect(l).toMatch(/^[\x20-\x7E]+$/)
   })
 
   it("escapes multi-scalar emoji as consecutive \\U sequences", () => {
