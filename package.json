@@ -34,12 +34,13 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "generate": "node scripts/generate.mjs",
-    "demo": "vite --config vite.demo.config.ts",
-    "demo:build": "vite build --config vite.demo.config.ts",
-    "demo:preview": "vite preview --config vite.demo.config.ts"
+    "demo": "node scripts/subset-font.mjs && vite --config vite.demo.config.ts",
+    "demo:build": "node scripts/subset-font.mjs && vite build --config vite.demo.config.ts",
+    "demo:preview": "node scripts/subset-font.mjs && vite preview --config vite.demo.config.ts"
   },
   "devDependencies": {
     "@types/node": "26.6.6",
+    "subset-font": "2.9.0",
     "tsup": "9.0.0",
     "typescript": "7.0.2",
     "vite": "8.3.8",
